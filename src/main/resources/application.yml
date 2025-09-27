@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: graphql-spring-boot
+  
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: password
+  
+  h2:
+    console:
+      enabled: true
+      path: '/h2-console'
+  
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+        format_sql: true
+  
+  graphql:
+    graphiql:
+      enabled: true
+      path: '/graphiql'
+    path: '/graphql'
+  
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+
+logging:
+  level:
+    com.example.graphql: DEBUG
+    org.springframework.graphql: DEBUG
