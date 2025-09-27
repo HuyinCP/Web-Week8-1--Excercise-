@@ -1,61 +1,61 @@
-# GraphQL Spring Boot 3 Application
+# Ứng dụng GraphQL Spring Boot 3
 
-This is a Spring Boot 3 application with GraphQL API for managing products, users, and categories with many-to-many relationships.
+Đây là ứng dụng Spring Boot 3 với GraphQL API để quản lý sản phẩm, người dùng và danh mục với mối quan hệ nhiều-nhiều.
 
-## Database Schema
+## Cấu trúc Database
 
 - **Category**: id, name, images
 - **User**: id, fullname, email, password, phone
 - **Product**: id, title, quantity, description, price, user_id
-- **User-Category**: Many-to-many relationship
+- **User-Category**: Mối quan hệ nhiều-nhiều
 
-## Features
+## Tính năng
 
 ### GraphQL Queries
-1. **Products sorted by price (low to high)**
-2. **Products by category**
-3. **CRUD operations for User, Product, and Category**
+1. **Hiển thị sản phẩm theo giá từ thấp đến cao**
+2. **Lấy sản phẩm theo danh mục**
+3. **Thao tác CRUD cho User, Product, và Category**
 
 ### Frontend
-- JSP view with AJAX integration
-- Bootstrap UI for better user experience
-- Real-time GraphQL queries and mutations
+- Giao diện JSP với tích hợp AJAX
+- UI Bootstrap để trải nghiệm người dùng tốt hơn
+- Truy vấn và đột biến GraphQL thời gian thực
 
-## Getting Started
+## Hướng dẫn sử dụng
 
-### Prerequisites
-- Java 17 or higher
-- Maven 3.6 or higher
+### Yêu cầu hệ thống
+- Java 17 trở lên
+- Maven 3.6 trở lên
 
-### Running the Application
+### Chạy ứng dụng
 
-1. **Clone or download the project**
+1. **Tải xuống dự án**
 
-2. **Navigate to project directory**
+2. **Di chuyển đến thư mục dự án**
    ```bash
    cd Web-Week8-1--Excercise-
    ```
 
-3. **Run the application**
+3. **Chạy ứng dụng**
    ```bash
    mvn spring-boot:run
    ```
 
-4. **Access the application**
-   - Main UI: http://localhost:8080
+4. **Truy cập ứng dụng**
+   - Giao diện chính: http://localhost:8080
    - GraphQL Playground: http://localhost:8080/graphiql
    - H2 Database Console: http://localhost:8080/h2-console
 
-### H2 Database Connection
+### Kết nối H2 Database
 - URL: `jdbc:h2:mem:testdb`
 - Username: `sa`
 - Password: `password`
 
 ## GraphQL API Endpoints
 
-### Queries
+### Truy vấn (Queries)
 
-#### Get All Products (Sorted by Price)
+#### Lấy tất cả sản phẩm (sắp xếp theo giá từ thấp đến cao)
 ```graphql
 query {
   allProducts {
@@ -73,7 +73,7 @@ query {
 }
 ```
 
-#### Get Products by Category
+#### Lấy sản phẩm theo danh mục
 ```graphql
 query {
   productsByCategory(categoryId: "1") {
@@ -90,7 +90,7 @@ query {
 }
 ```
 
-#### Get All Users
+#### Lấy tất cả người dùng
 ```graphql
 query {
   allUsers {
@@ -106,7 +106,7 @@ query {
 }
 ```
 
-#### Get All Categories
+#### Lấy tất cả danh mục
 ```graphql
 query {
   allCategories {
@@ -122,15 +122,15 @@ query {
 }
 ```
 
-### Mutations
+### Đột biến (Mutations)
 
-#### Create Product
+#### Tạo sản phẩm mới
 ```graphql
 mutation {
   createProduct(input: {
-    title: "New Product"
+    title: "Sản phẩm mới"
     quantity: 10
-    description: "Product description"
+    description: "Mô tả sản phẩm"
     price: 99.99
     userId: "1"
   }) {
@@ -141,14 +141,14 @@ mutation {
 }
 ```
 
-#### Create User
+#### Tạo người dùng mới
 ```graphql
 mutation {
   createUser(input: {
-    fullname: "John Doe"
-    email: "john@example.com"
+    fullname: "Nguyễn Văn A"
+    email: "nguyenvana@example.com"
     password: "password123"
-    phone: "123-456-7890"
+    phone: "0123-456-789"
   }) {
     id
     fullname
@@ -157,11 +157,11 @@ mutation {
 }
 ```
 
-#### Create Category
+#### Tạo danh mục mới
 ```graphql
 mutation {
   createCategory(input: {
-    name: "Electronics"
+    name: "Điện tử"
     images: "electronics.jpg"
   }) {
     id
@@ -170,7 +170,7 @@ mutation {
 }
 ```
 
-## Project Structure
+## Cấu trúc dự án
 
 ```
 src/
@@ -207,38 +207,38 @@ src/
 └── pom.xml
 ```
 
-## Technologies Used
+## Công nghệ sử dụng
 
 - **Spring Boot 3.2.0**
 - **Spring Data JPA**
 - **Spring GraphQL**
 - **H2 Database** (in-memory)
-- **JSP/JSTL** for frontend
-- **Bootstrap 5** for UI styling
-- **Lombok** for reducing boilerplate code
+- **JSP/JSTL** cho frontend
+- **Bootstrap 5** cho UI styling
+- **Lombok** để giảm boilerplate code
 
-## Features Implemented
+## Tính năng đã triển khai
 
-✅ **GraphQL API with Spring Boot 3**
-✅ **Products sorted by price (low to high)**
-✅ **Products by category query**
-✅ **Full CRUD operations for User, Product, and Category**
-✅ **Many-to-many relationship between User and Category**
-✅ **JSP frontend with AJAX integration**
-✅ **Bootstrap UI for better user experience**
-✅ **Sample data initialization**
-✅ **GraphQL Playground for testing**
+✅ **GraphQL API với Spring Boot 3**
+✅ **Sản phẩm sắp xếp theo giá từ thấp đến cao**
+✅ **Truy vấn sản phẩm theo danh mục**
+✅ **Đầy đủ thao tác CRUD cho User, Product, và Category**
+✅ **Mối quan hệ nhiều-nhiều giữa User và Category**
+✅ **Frontend JSP với tích hợp AJAX**
+✅ **UI Bootstrap để trải nghiệm người dùng tốt hơn**
+✅ **Khởi tạo dữ liệu mẫu**
+✅ **GraphQL Playground để test**
 
-## Sample Data
+## Dữ liệu mẫu
 
-The application automatically initializes with sample data including:
-- 3 Categories (Electronics, Clothing, Books)
-- 3 Users with different category associations
-- 6 Products with various prices for testing sorting functionality
+Ứng dụng tự động khởi tạo với dữ liệu mẫu bao gồm:
+- 3 Danh mục (Điện tử, Quần áo, Sách)
+- 3 Người dùng với các liên kết danh mục khác nhau
+- 6 Sản phẩm với giá khác nhau để test chức năng sắp xếp
 
-## Testing the API
+## Cách test API
 
-1. Use the web interface at http://localhost:8080
-2. Use GraphQL Playground at http://localhost:8080/graphiql
-3. Test AJAX functionality through the web interface
-4. Verify the many-to-many relationships between users and categories
+1. Sử dụng giao diện web tại http://localhost:8080
+2. Sử dụng GraphQL Playground tại http://localhost:8080/graphiql
+3. Test chức năng AJAX thông qua giao diện web
+4. Xác minh mối quan hệ nhiều-nhiều giữa users và categories
