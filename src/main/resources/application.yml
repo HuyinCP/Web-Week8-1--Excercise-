@@ -40,3 +40,11 @@ logging:
   level:
     com.example.graphql: DEBUG
     org.springframework.graphql: DEBUG
+    org.springframework.messaging: DEBUG
+    org.springframework.web.socket: DEBUG
+
+# WebSocket Configuration
+spring:
+  websocket:
+    servlet:
+      allowed-origins: "*"

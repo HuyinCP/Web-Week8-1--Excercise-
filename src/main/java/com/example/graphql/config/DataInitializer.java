@@ -3,9 +3,11 @@ package com.example.graphql.config;
 import com.example.graphql.model.Category;
 import com.example.graphql.model.User;
 import com.example.graphql.model.Product;
+import com.example.graphql.model.ChatRoom;
 import com.example.graphql.repository.CategoryRepository;
 import com.example.graphql.repository.UserRepository;
 import com.example.graphql.repository.ProductRepository;
+import com.example.graphql.repository.ChatRoomRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,13 +20,16 @@ public class DataInitializer implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
     private final UserRepository userRepository;
     private final ProductRepository productRepository;
+    private final ChatRoomRepository chatRoomRepository;
     
     public DataInitializer(CategoryRepository categoryRepository, 
                           UserRepository userRepository, 
-                          ProductRepository productRepository) {
+                          ProductRepository productRepository,
+                          ChatRoomRepository chatRoomRepository) {
         this.categoryRepository = categoryRepository;
         this.userRepository = userRepository;
         this.productRepository = productRepository;
+        this.chatRoomRepository = chatRoomRepository;
     }
     
     @Override
@@ -118,6 +123,19 @@ public class DataInitializer implements CommandLineRunner {
         product6.setPrice(new BigDecimal("39.99"));
         product6.setUser(user3);
         productRepository.save(product6);
+        
+        // Create chat rooms
+        ChatRoom customerSupportRoom = new ChatRoom();
+        customerSupportRoom.setName("Customer Support");
+        customerSupportRoom.setRoomType(ChatRoom.RoomType.CUSTOMER_SUPPORT);
+        customerSupportRoom.setIsActive(true);
+        chatRoomRepository.save(customerSupportRoom);
+        
+        ChatRoom generalRoom = new ChatRoom();
+        generalRoom.setName("General Chat");
+        generalRoom.setRoomType(ChatRoom.RoomType.GENERAL);
+        generalRoom.setIsActive(true);
+        chatRoomRepository.save(generalRoom);
         
         System.out.println("Sample data initialized successfully!");
     }
